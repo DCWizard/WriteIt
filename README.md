@@ -30,6 +30,8 @@ Such as: (I will be posting some of that here keep watching me. I'm not done yet
 -A Video Player.
 
 If you appreciate my work.
-You can give me donation via Wechat My Wechat
 
-Or directly from my web site: https://thinknspeak.net/product/donation/
+You can give me donation from my web site: https://thinknspeak.net/product/donation/
+
+Or directly via Wechat <a href="https://github.com/DCWizard/WriteIt/raw/refs/heads/main/img/MyWechat.webp" >My Wechat</a>
+
