@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Testing  -->
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="https://course.thinknspeak.net/TOOLS/TEACH/DCRes/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://course.thinknspeak.net/TOOLS/TEACH/DCRes/favicon.ico" type="image/x-icon">
+  <title>WriteIt</title>
+</head>
+<body style="background-color: black;">
+
+
+<div id="ShowLocalWarning" style="color:white;font-size:3vh;text-align:center;display:none;">WriteIt (Will not work properly if run locally)</div>
+
+<div id="MainDisplay" style="background-color: black;" > 
+  <div>
+    <script id="EventToolBox" src="https://course.thinknspeak.net/TOOLS/TEACH/DCMins/Sub/DCEventTools.js"></script>
+    <script id="DCTools" src="https://course.thinknspeak.net/TOOLS/TEACH/DCMins/DCTools.js"></script>
+    <!-- <link id="DCTools.css"   rel="stylesheet" type="text/css" href="https://course.thinknspeak.net/TOOLS/TEACH/DCLibs/DCTools.css" /> -->
+    <div style="text-align: center; background: gainsboro;">
+
+      <textarea id="SpeakText" style="width:80%;height:80vh;font-size:min(2.25vh, 2.25vw);font-weight:bolder;" placeholder="
+  1- Open the Sidebar and select your language and settings
+  2- Click listen.
+If you appreciate my work.
+
+You can give me donation from my web site: https://thinknspeak.net/product/donation/
+
+Or directly via Wechat <a href="https://github.com/DCWizard/WriteIt/raw/refs/heads/main/img/MyWechat.webp" >My Wechat</a>
+  Easy enough for ya!
+      "></textarea>
+       <br>
+    </div>
+    <br>
+
+    <div style="text-align: center;">
+      <button id="SpeakBut"style="width:25%;font-size:min(2.25vh, 2.25vw);font-weight:bolder;visibility:hidden;" onclick="OnListen(event)">WriteIt</button> <br>
+    </div>
+    <br>
+    <div id="AudioBody"></div>
+
+    <!-- SLIDERIGHT BEGIN  -->
+    <div class="SlideRightPanel" style="left: 100vw;">
+      <div class="SlideRightPanelCnt">
+
+<!-- 
+        <li>
+        <div class="SlideRightPanel_Div">
+          Speech Pitch:(0-2)<br>
+          <input type="text" id="SpeechPitch" size="20" style="font-size: 75%;" onchange="OnSpeechPitchChange(this)" value="">
+        </div> 
+        </li><hr>
+        <li>
+        <div class="SlideRightPanel_Div">
+          Speech rate:<br>
+          <input type="text" id="SpeechRate" size="20" style="font-size: 75%;" onchange="OnSpeechRateChange(this)" value="">
+        </div> 
+        </li><hr>
+ -->
+        <li>
+        <div class="SideBar_Div" >
+          Microphone Language:<br>
+          <button id='MicLanguage' style='width:90%' onclick='OnChooseMicLanguage(this, event)' >Select Language </button>
+        </div> 
+        </li><HR>
+
+<!-- 
+        <li>
+        <div class="SlideRightPanel_Div">
+          Select Language:<br>
+          <select id="SelectLang" style="font-size:min(2.75vh, 2.75vw);" onchange="OnLangChange(this)" >
+          </select>
+        </div> 
+        </li><hr>
+      TheReckonVoice.interimResults   = true; // true
+      TheReckonVoice.lang             = 'en-US';
+
+      TheReckonVoice.continuous       = false; // false
+      TheReckonVoice.maxAlternatives  = 1;
+
+      // This going to need some work maybe.
+      // TheReckonVoice.grammars         = [];
+ -->
+
+      </div>
+      <div class="SlideRightPanelBtn" style="margin-top: 0vh;" onclick="OnToggleRightSidebar(event)">
+        <svg style="fill:white;" viewBox="0 0 512 512">
+          <path d="m 335.22251,255.26103 q 0,32.15503 -22.75121,54.90624 -22.75121,22.75121 -54.90625,22.75121 -32.15504,0 -54.90625,-22.75121 -22.7512,-22.75121 -22.7512,-54.90624 0,-32.15505 22.7512,-54.90625 22.75121,-22.75121 54.90625,-22.75121 32.15504,0 54.90625,22.75121 22.75121,22.7512 22.75121,54.90625 z m 155.3149,33.06507 v -67.34356 q 0,-3.6402 -2.42679,-6.97703 -2.4268,-3.33685 -6.06699,-3.94355 l -56.11965,-8.49378 q -5.76364,-16.38088 -11.83062,-27.6048 10.61722,-15.16748 32.45838,-41.86223 3.0335,-3.64019 3.0335,-7.58373 0,-3.94354 -2.73015,-6.97704 -8.19043,-11.22393 -30.03159,-32.761735 -21.84116,-21.537809 -28.51484,-21.537809 -3.6402,0 -7.88709,2.730145 l -41.86223,32.761738 q -13.34737,-6.977037 -27.60479,-11.527278 -4.85359,-41.255528 -8.79713,-56.422997 -2.12345,-8.493781 -10.92059,-8.493781 h -67.34357 q -4.24689,0 -7.43206,2.578466 -3.18516,2.578477 -3.48851,6.522013 l -8.49378,55.816299 q -14.86414,4.85359 -27.30145,11.223929 L 134.40518,65.970981 q -3.03349,-2.730145 -7.58373,-2.730145 -4.24689,0 -7.58374,3.336843 -38.222027,34.581831 -50.052654,50.962701 -2.123446,3.0335 -2.123446,6.97704 0,3.64019 2.426795,6.97703 4.550242,6.37034 15.470821,20.17274 10.920579,13.8024 16.380864,21.38614 -8.19043,15.16747 -12.437321,30.03159 l -55.512946,8.19043 q -3.943542,0.6067 -6.370337,3.79188 -2.426796,3.18516 -2.426796,7.12871 v 67.34357 q 0,3.64019 2.426796,6.97704 2.426795,3.33684 5.763638,3.94353 l 56.422995,8.49379 q 4.246891,13.95407 11.830631,27.90815 -12.133981,17.29091 -32.458393,41.86222 -3.033494,3.64019 -3.033494,7.28039 0,3.03349 2.730145,6.97703 7.887085,10.92058 29.879919,32.61007 21.992833,21.68948 28.666523,21.68948 3.94354,0 7.88708,-3.0335 l 41.86222,-32.45838 q 13.34737,6.97704 27.60481,11.52727 4.85358,41.25552 8.79713,56.423 2.12344,8.49378 10.92057,8.49378 h 67.34357 q 4.2469,0 7.43207,-2.57846 3.18517,-2.57848 3.48852,-6.52202 l 8.49378,-55.8163 q 14.86412,-4.85358 27.30145,-11.22392 l 43.07562,32.45838 q 2.73014,2.73015 7.28039,2.73015 3.94353,0 7.58373,-3.0335 39.13208,-36.09858 50.05265,-51.5694 2.12346,-2.4268 2.12346,-6.67368 0,-3.6402 -2.42681,-6.97704 -4.55023,-6.37034 -15.47081,-20.17274 -10.92059,-13.8024 -16.38087,-21.38613 7.88708,-15.16748 12.43732,-29.72825 l 55.51295,-8.49378 q 3.94354,-0.6067 6.37034,-3.79187 2.42679,-3.18517 2.42679,-7.12872 z"></path>
+        </svg>
+      </div>
+    </div>
+
+    <style id="!{SlideRightPanel}-Style">
+       *{
+        scrollbar-width: thin; /* thin scroll bar replace ugly scrollbar with an ungly thin one */
+      }
+     .SlideRightPanel {
+      	
+      	display:block;
+        position:fixed;
+      	top:10vh;
+      	height:72vh;
+        width:32.5vw;
+      	left:100vw;
+      	background: #444;
+        z-index: 2147483640;
+        pointer-events: none;
+      }
+      .SlideRightPanelCnt {
+      	overflow-y: scroll;
+        overflow-x: clip;
+      	height: 100%;
+        pointer-events: all;
+      }
+
+      .SlideRightPanelBtn {
+        margin-top: 0vh;
+      	display: inline-block;
+      	margin: 0;
+      	padding: 0;
+      	position: absolute;
+      	top: 0vh;
+      	left: max(-7.5vh,-7.5vw);
+      	height: min(5.5vh, 7.5vw);
+      	width: min(5.5vh, 7.5vw);
+      	text-align: center;
+      	color: white;
+      	font-size: min(5.75vh,5.5vw);
+      	font-weight: bolder;
+      	line-height: min(5.5vh,7.5vw);
+      	border: none;
+      	border-radius: 0.75vh;
+      	background: #148197;
+        pointer-events: all;
+      	cursor: pointer;
+        user-select: none;
+      }
+      .SlideRightPanel_Div, 
+      .SideBar_Div {
+        margin:min(1vw,1vh) min(1.5vw, 1.5vh);
+        color: white;
+        font-size: min(3vw, 3vh);
+      }
+    </style>
+
+    <script id="!{SlideRightPanel}">
+      var SideBarRight                  = 66.5;
+
+      function OnToggleRightSidebar (ThisEvent){
+        let ThisSidebar             = ThisEvent.currentTarget.parentElement;
+        let ThisCurrentLeft         = ThisSidebar.style.left || 0;
+
+        if(SideBarRight == parseFloat(ThisCurrentLeft)){
+          CloseRightSideBar(ThisSidebar);
+        } else {
+          OpenRightSideBar(ThisSidebar); 
+        }
+        function OpenRightSideBar(ThisSidebar){
+          FillLangTable();
+          ThisSidebar.style.transition    = "left 0.3s linear";
+          ThisSidebar.style.left          = SideBarRight + "vw"; 
+          ThisSidebar.style.zIndex        = "2147483641";
+          // SET VAR HERE:
+          setTimeout(function(){
+            // end.value              = TheSpeechRate ;
+            // SpeechPitch.value             = TheSpeechPitch;
+            // ThisSidebar.style.transition  = "";
+          }, 300);
+        }
+        function CloseRightSideBar(ThisSidebar){
+        let ThisCurrentLeft               = ValueOf(ThisSidebar.style.left);
+          
+          ThisSidebar.style.transition    = "left 0.3s linear";
+          ThisSidebar.style.left          = "100vw"; 
+          ThisSidebar.style.zIndex        = "";
+          setTimeout(function(){
+            ThisSidebar.style.transition  = "";
+          }, 300);
+        }
+      }
+    </script> 
+  </div>
+
+  <!-- SLIDERIGHT END  -->
+  <script id="!{SpeakIt}">
+    function OnChooseMicLanguage(This, ThisEvent){
+      ChooseMicLanguage(ThisEvent.view, "Chinese");
+    }
+    function SaveSettingsInfo(){
+      SetLocalStorage        ("CurLang",          TheLangCode );
+      // SetLocalStorage        ("SpeechPitch",          TheSpeechPitch );
+      // SetLocalStorage        ("SpeechRate",           TheSpeechRate );
+      // SetLocalStorage        ("SpeechVoice",          TheVoiceName );
+    }
+    function OnLoad (){
+      if(IsLocalPage()){
+        ShowLocalWarning.style.display = "";
+      }
+      TheLangCode                          = (GetLocalStorage ("CurLang", TheLangCode ));
+      // TheSpeechPitch                          = (GetLocalStorage ("SpeechPitch", 1 ));
+      // TheSpeechRate                           = (GetLocalStorage ("SpeechRate",  1 ));
+      // TheVoiceName                            = (GetLocalStorage ("SpeechVoice",  TheVoiceName.toString() ));
+      // FillLangTable();
+      InstallDonateButton();
+      let ThisReckonVoice                     = EnableListener (OnIncomingMsg);
+      if(!(TheReckonVoice)){
+        alert("No Speech Reckon.");
+      } else {
+        SpeakBut.style.visibility = "";
+        // Let the user start
+        // TheReckonVoice.lang          = TheLangCode;
+        // TheReckonVoice.start();
+      }
+
+    } 
+    function OnIncomingMsg (ThisReason, ThisEvent, ThisTranscript){
+      if(ThisReason      == "End"){
+        if(ThisEvent.result){
+          console.warn("Got result at the end:", ThisEvent.result);
+        }
+        if(Listening){
+          try{
+            TheReckonVoice.lang          = TheLangCode;
+            TheReckonVoice.start();
+          } catch(ThisErr){
+            SpeakBut.style.backgroundColor = "";
+            alert("Fail to re-start Listening.");
+            return;
+          }
+          if(SpeakBut.style.backgroundColor == "chartreuse"){
+            SpeakBut.style.backgroundColor = "#ff7070";
+          } else {
+            SpeakBut.style.backgroundColor = "chartreuse"
+          }
+        } 
+      } else 
+      if(ThisReason      == "Transcript"){
+        InsertText (SpeakText, ThisTranscript + "\n");
+      }
+    }
+    var Listening;
+    function OnListen(ThisEvent){
+      if(!(TheReckonVoice)){
+        alert("No Speech Reckon.");
+      }
+      if((Listening)
+      ){
+        Listening = false;
+        SpeakBut.style.backgroundColor = "";
+
+        try{
+          TheReckonVoice.stop();
+        } catch(ThisErr){
+        }
+      } else {
+        try{
+          TheReckonVoice.lang          = TheLangCode;
+          TheReckonVoice.start();
+        } catch(ThisErr){
+          alert("Fail to start Listening.");
+          return;
+        }
+        Listening = true;
+        SpeakBut.style.backgroundColor = "chartreuse";
+      }
+    }
+    window.addEventListener("load", OnLoad);
+    // OnLoad();
+
+  </script>
+</div>
+
+
+
+
+
+
+</body>
+</html>
