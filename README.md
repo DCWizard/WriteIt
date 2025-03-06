@@ -2,6 +2,9 @@
 A simple Speech-To-text (STT) interface for the web browser
 
 All you have to do is download it and run it in your browser.
++ If run locally, it eill constantly request you to allow access to the microphone. 
+It's a bit annoying and it's a bug in the browser. 
+
 Allthough, this one is a bit tricky as it's a better experience on a server.
 + Firefox based do not support this feature at all.
 + Better to run on Chrome/Edge(1st).
